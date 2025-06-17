@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Nutricional - PetNutri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #progressContainer {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: white;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+  <link rel="icon" href="./public/assets/pet-logo.svg" type="image/svg+xml">
+</head>
+<body class="bg-white text-[#0F172A] flex items-center justify-center min-h-screen px-4">
+
+  <!-- Container principal -->
+  <section class="bg-white rounded-3xl shadow-lg max-w-3xl w-full p-10 sm:p-16 flex flex-col">
+    <h1 class="text-3xl font-bold mb-6 text-center">Vamos entender as necessidades do seu pet?</h1>
+    <p class="text-center text-gray-600 mb-10">Responda com sinceridade e descubra como melhorar a alimentação do seu melhor amigo.</p>
+
+    <!-- Barra de Progresso -->
+    <div id="progressContainer" class="w-full rounded-full h-4 mb-8">
+      <div id="progressBar" class="h-4 rounded-full bg-[#0F172A] transition-all duration-300 ease-in-out w-0"></div>
+    </div>
+
+    <!-- Quiz -->
+    <main class="flex flex-col flex-1">
+      <div id="questionBox" class="flex flex-col gap-6 text-center">
+      </div>
+      <p id="counter" class="text-sm text-right text-gray-500 mt-8"></p>
+    </main>
+
+    <footer class="mt-8">
+      <button id="restartBtn" class="hidden w-full text-center text-sm text-[#0F172A] hover:underline">🔁 Recomeçar o quiz</button>
+    </footer>
+  </section>
+
+<script>
+  const perguntas = [
+    "Seu pet costuma comer apenas ração seca ou alimentos industrializados?",
+    "Você sente que ele tem problemas digestivos ou intestinais com frequência?",
+    "Já pensou em montar uma dieta natural personalizada para seu pet?",
+    "Você acredita que a alimentação do seu pet influencia diretamente na saúde e longevidade dele?",
+    "Se existisse um plano nutricional fácil e acessível feito sob medida para seu pet, você toparia experimentar?",
+  ];
+
+  let atual = 0;
+  let score = 0;
+
+  const questionBox = document.getElementById("questionBox");
+  const progressBar = document.getElementById("progressBar");
+  const counter = document.getElementById("counter");
+  const restartBtn = document.getElementById("restartBtn");
+
+  function renderPergunta() {
+    const pergunta = perguntas[atual];
+    const progresso = ((atual / perguntas.length) * 100).toFixed(0);
+    progressBar.style.width = `${progresso}%`;
+    counter.innerText = `Pergunta ${atual + 1} de ${perguntas.length}`;
+
+    questionBox.innerHTML = `
+      <h2 class="text-2xl font-semibold">${pergunta}</h2>
+      <div class="flex flex-col gap-6 mt-6 sm:flex-row sm:justify-center">
+        <button id="btnSim" class="bg-[#0F172A] text-white px-8 py-4 rounded-xl hover:bg-blue-900 flex items-center justify-center gap-3 transition-all text-lg font-semibold">
+          👍 Sim
+        </button>
+        <button id="btnNao" class="bg-gray-200 text-[#0F172A] px-8 py-4 rounded-xl hover:bg-gray-300 flex items-center justify-center gap-3 transition-all text-lg font-semibold mt-4 sm:mt-0 sm:ml-6">
+          👎 Não
+        </button>
+      </div>
+    `;
+
+    document.getElementById("btnSim").addEventListener("click", () => responder(true));
+    document.getElementById("btnNao").addEventListener("click", () => responder(false));
+  }
+
+  function responder(resposta) {
+    score += resposta ? 1 : 0;
+    atual++;
+
+    if (atual < perguntas.length) {
+      renderPergunta();
+    } else {
+      mostrarResultado();
+    }
+  }
+
+  function mostrarResultado() {
+    progressBar.style.width = `100%`;
+    counter.innerText = "Fim do quiz";
+
+    questionBox.innerHTML = `
+      <h2 class="text-3xl font-bold text-[#0F172A]">Muito bem! Seu pet merece o melhor 🐶🐱</h2>
+      <p class="mt-4 text-lg text-gray-700">Você respondeu "Sim" a <strong>${score}</strong> de ${perguntas.length} perguntas.</p>
+      <p class="mt-4 text-gray-600">Com base nisso, preparamos um plano nutricional feito sob medida pro seu pet, com ingredientes naturais, saudáveis e recomendados por especialistas.</p>
+      <a href="./formulario.html" class="mt-8 inline-block w-full text-center bg-[#0F172A] hover:bg-blue-900 text-white py-4 rounded-xl font-semibold text-xl animate-bounce transition-all duration-300">
+        🐾 Montar dieta personalizada agora
+      </a>
+    `;
+
+    restartBtn.classList.remove("hidden");
+  }
+
+  function restartQuiz() {
+    atual = 0;
+    score = 0;
+    restartBtn.classList.add("hidden");
+    renderPergunta();
+  }
+
+  restartBtn.addEventListener("click", restartQuiz);
+  document.addEventListener("DOMContentLoaded", renderPergunta);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCão - Plano Alimentar Personalizado para seu Pet</title>
+  <meta name="description" content="Monte um plano alimentar saudável, seguro e personalizado para seu cão.">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-white text-gray-800 font-[Inter]">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex flex-col">
+        <span class="text-2xl font-bold text-blue-700">NutriCão</span>
+        <span class="text-sm text-gray-500">Cuidado nutricional para seu cão</span>
+      </div>
+
+      <nav class="hidden md:flex space-x-8">
+        <a href="#" class="hover:text-blue-700 font-medium">Home</a>
+        <a href="./comoFunciona.html" class="hover:text-blue-700">Como Funciona</a>
+        <a href="https://wa.me/5524992618332" class="hover:text-blue-700">Fale Conosco</a>
+      </nav>
+
+      <!-- Mobile -->
+      <button id="menu-btn" class="md:hidden text-3xl text-blue-700">&#9776;</button>
+    </div>
+
+    <div id="menu" class="hidden md:hidden px-6 pb-4">
+      <a href="#" class="block py-2">Home</a>
+      <a href="#" class="block py-2">Como Funciona</a>
+      <a href="https://wa.me/5524992618332" class="block py-2">Fale Conosco</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-blue-50 py-16">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4">
+        Nutrição saudável e personalizada <br> para seu pet 🐾
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 mb-8">
+        Crie uma dieta equilibrada, recomendada por especialistas, 100% personalizada para seu cão.
+      </p>
+      <a href="#formulario" id="scrollButton"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition">
+        Monte o Plano do Meu Pet →
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Formulário -->
+  <main id="formulario" class="max-w-3xl mx-auto py-16 px-6 space-y-12">
+
+    <!-- Card Informações -->
+    <section class="bg-white border border-blue-100 rounded-2xl shadow-lg p-8">
+      <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+        🐶 <span class="ml-2">Informações do Pet</span>
+      </h2>
+
+      <form id="form-pet" class="space-y-5">
+        <input type="text" placeholder="Raça do cachorro" id="raca"
+          class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" required />
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input type="number" placeholder="Peso (kg)" id="peso"
+            class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" required />
+
+          <input type="number" placeholder="Altura (cm)" id="altura"
+            class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" required />
+
+          <input type="number" placeholder="Idade (anos)" id="idade"
+            class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" required />
+        </div>
+      </form>
+    </section>
+
+    <!-- Card Dieta -->
+    <section class="bg-white border border-blue-100 rounded-2xl shadow-lg p-8">
+      <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+        🍖 <span class="ml-2">Características</span>
+      </h2>
+
+      <form class="space-y-5">
+        <select id="porte" class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" required>
+          <option value="">Porte do cachorro</option>
+          <option>Pequeno</option>
+          <option>Médio</option>
+          <option>Grande</option>
+        </select>
+
+        <select id="atividade" class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" required>
+          <option value="">Nível de atividade</option>
+          <option>Baixo</option>
+          <option>Moderado</option>
+          <option>Alto</option>
+        </select>
+
+        <select id="objetivo" class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" required>
+          <option value="">Objetivo da dieta</option>
+          <option>Emagrecimento</option>
+          <option>Manutenção</option>
+          <option>Ganho de massa</option>
+          <option>Saúde geral</option>
+        </select>
+
+        <input type="text" id="restricoes" placeholder="Restrições alimentares (se houver)"
+          class="w-full border rounded-lg p-3 border-blue-300 outline-blue-500" />
+
+        <div class="flex gap-4">
+          <button type="button" id="macho"
+            class="gender-btn flex-1 border border-blue-600 text-blue-600 rounded-lg p-3 transition"
+            data-genero="Macho">Macho</button>
+          <button type="button" id="femea"
+            class="gender-btn flex-1 border border-blue-600 text-blue-600 rounded-lg p-3 transition"
+            data-genero="Fêmea">Fêmea</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Card Checkout -->
+    <section class="bg-white border border-blue-100 rounded-2xl shadow-xl p-8 text-center">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Plano Personalizado</h2>
+      <p class="text-lg text-gray-600 mb-2">Por apenas</p>
+      <p class="text-4xl font-extrabold text-blue-700 mb-6">R$ 14,90</p>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 text-left mb-6">
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-start"><span class="text-blue-600 mr-2">✔</span> Dieta Personalizada</li>
+          <li class="flex items-start"><span class="text-blue-600 mr-2">✔</span> Lista de Compras Fácil</li>
+          <li class="flex items-start"><span class="text-blue-600 mr-2">✔</span> Recomendações Seguras</li>
+          <li class="flex items-start"><span class="text-blue-600 mr-2">✔</span> Guia de Quantidades Diárias</li>
+          <li class="flex items-start"><span class="text-blue-600 mr-2">✔</span> Acompanhamento Opcional</li>
+        </ul>
+      </div>
+
+      <a href="javascript:void(0)" id="gerarReceitaBtn"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full w-full block transition">
+        Gerar Dieta Agora →
+      </a>
+
+      <p class="text-xs text-gray-400 mt-4 flex items-center justify-center gap-1">
+        🔒 Compra 100% segura e protegida
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-50 py-6 text-center text-sm text-gray-500">
+    © 2025 NutriCão | Todos os direitos reservados
+  </footer>
+
+  <!-- Scripts -->
+   <script type="module" src="../js/formulario.js"></script>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    const generoBtns = document.querySelectorAll(".gender-btn");
+    generoBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        generoBtns.forEach(b => {
+          b.classList.remove("bg-blue-600", "text-white");
+          b.classList.add("bg-white", "text-blue-600");
+        });
+
+        btn.classList.remove("bg-white", "text-blue-600");
+        btn.classList.add("bg-blue-600", "text-white");
+      });
+    });
+  </script>
+  <script>
+    document.getElementById('scrollButton').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector('#formulario').scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - NutriCão</title>
+  <link rel="stylesheet" href="../css/checkout.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="checkout-card">
+      <div class="header">
+        <h1>Finalize seu Pedido</h1>
+        <p>Plano Nutricional Veterinário Personalizado</p>
+      </div>
+
+      <div class="payment-summary">
+        <div>Pagamento via PIX</div>
+        <span id="valorTotal">R$ 97,90</span>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item"><span>✓</span> Acesso imediato após pagamento</div>
+        <div class="feature-item"><span>✓</span> Plano alimentar em PDF</div>
+        <div class="feature-item"><span>✓</span> Guia de suplementação veterinária</div>
+        <div class="feature-item"><span>✓</span> Programa de exercícios personalizado</div>
+      </div>
+
+      <form id="pixForm">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" required placeholder="seu@email.com" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" required placeholder="Seu nome" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="petNome">Nome do seu Pet</label>
+          <input type="text" id="petNome" required placeholder="Nome do seu cão" class="form-control">
+        </div>
+        <button type="submit" class="btn-primary">
+          Gerar Código PIX →
+        </button>
+      </form>
+
+      <div id="pixResult" class="pix-result">
+        <h3 style="text-align: center; margin-bottom: 1rem;">Pagamento via PIX</h3>
+
+        <div style="text-align: center; margin-bottom: 1rem;">
+          <p style="font-weight: 500;">Código PIX Copia e Cola</p>
+          <div style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border: 1px solid var(--border);">
+            <pre id="pixCode" style="margin: 0; word-break: break-all; font-size: 0.85rem;"></pre>
+          </div>
+          <button id="copyPixBtn" class="copy-btn">📋 Copiar Código</button>
+        </div>
+
+        <div style="text-align: center;">
+          <p style="font-weight: 500;">Ou escaneie o QR Code</p>
+          <div class="qr-code-container">
+            <img id="pixQRCode" alt="QR Code PIX" style="width: 180px; height: 180px;">
+          </div>
+        </div>
+      </div>
+
+      <div class="secure-badge">🔒 Pagamento 100% seguro - Dados criptografados</div>
+    </div>
+  </div>
+
+  <div id="toast">Código PIX copiado!</div>
+
+  <script type="module" src="../js/checkout.js"></script>
+
+</body>
+</html>
