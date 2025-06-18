@@ -132,10 +132,20 @@
     </section>
     <script>
         function escolherPlano(plano) {
+            // Tabela de valores dos planos
+            const valores = {
+                vitalidade: 14.90,
+                controlePeso: 9.99,
+                emagrecimento: 9.99,
+            };
+
             // Salva o plano escolhido no sessionStorage
             sessionStorage.setItem('planoEscolhido', plano);
 
-            // Redireciona diretamente para a página de checkout
+            // Salva o valor do plano no sessionStorage (formato número)
+            sessionStorage.setItem('valorPlano', valores[plano]);
+
+            // Redireciona para a página de checkout
             window.location.href = 'checkout.html';
         }
     </script>

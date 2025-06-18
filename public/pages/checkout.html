@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - NutriCão</title>
   <link rel="stylesheet" href="../css/checkout.css">
 </head>
+
 <body>
 
   <div class="container">
@@ -17,7 +19,7 @@
 
       <div class="payment-summary">
         <div>Pagamento via PIX</div>
-        <span id="valorTotal">R$ 97,90</span>
+        <span id="valorTotal"></span>
       </div>
 
       <div class="feature-list">
@@ -50,7 +52,8 @@
 
         <div style="text-align: center; margin-bottom: 1rem;">
           <p style="font-weight: 500;">Código PIX Copia e Cola</p>
-          <div style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border: 1px solid var(--border);">
+          <div
+            style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border: 1px solid var(--border);">
             <pre id="pixCode" style="margin: 0; word-break: break-all; font-size: 0.85rem;"></pre>
           </div>
           <button id="copyPixBtn" class="copy-btn">📋 Copiar Código</button>
@@ -72,5 +75,24 @@
 
   <script type="module" src="../js/checkout.js"></script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const valorPlano = sessionStorage.getItem('valorPlano');
+
+      if (!valorPlano) {
+        // Caso não tenha valor, pode exibir uma mensagem ou valor padrão
+        document.getElementById('valorTotal').textContent = 'R$ 0,00';
+        return;
+      }
+
+      // Formata o valor para duas casas decimais com vírgula
+      const valorFormatado = parseFloat(valorPlano).toFixed(2).replace('.', ',');
+
+      // Atualiza o span com o valor formatado
+      document.getElementById('valorTotal').textContent = `R$ ${valorFormatado}`;
+    });
+  </script>
+
 </body>
+
 </html>
