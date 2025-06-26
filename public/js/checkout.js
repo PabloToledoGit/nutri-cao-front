@@ -1,27 +1,21 @@
-// Função para exibir mensagens na tela (substitui alert)
-// Você precisará ter um elemento no seu HTML como este:
-// <div id="messageBox" style="display:none; padding: 10px; border-radius: 5px; margin-top: 10px;">
-//     <span id="messageText"></span>
-//     <button onclick="document.getElementById('messageBox').style.display = 'none';" style="float: right; background: none; border: none; font-size: 1.2em; cursor: pointer;">&times;</button>
-// </div>
+
 function showMessage(message, isError = false) {
     const messageBox = document.getElementById('messageBox');
     const messageText = document.getElementById('messageText');
-    
+
     if (messageBox && messageText) {
         messageText.textContent = message;
-        messageBox.style.backgroundColor = isError ? '#f8d7da' : '#d4edda'; // Vermelho claro para erro, verde claro para sucesso
-        messageBox.style.color = isError ? '#721c24' : '#155724'; // Texto escuro para erro, verde escuro para sucesso
-        messageBox.style.borderColor = isError ? '#f5c6cb' : '#c3e6cb'; // Borda correspondente
+        messageBox.style.backgroundColor = isError ? '#f8d7da' : '#d4edda';
+        messageBox.style.color = isError ? '#721c24' : '#155724';
+        messageBox.style.borderColor = isError ? '#f5c6cb' : '#c3e6cb';
         messageBox.style.display = 'block';
-        // Opcional: Ocultar automaticamente após alguns segundos para mensagens não-erro
+
         if (!isError) {
             setTimeout(() => {
                 messageBox.style.display = 'none';
             }, 5000);
         }
     } else {
-        // Fallback se os elementos messageBox não existirem no HTML
         if (isError) {
             console.error('Erro:', message);
         } else {
@@ -30,7 +24,6 @@ function showMessage(message, isError = false) {
     }
 }
 
-// Adicione este código no final do seu script, antes do </body>
 document.getElementById('pixForm').addEventListener('submit', async function (e) {
     e.preventDefault(); // Impede o recarregamento da página
 
@@ -55,7 +48,7 @@ document.getElementById('pixForm').addEventListener('submit', async function (e)
 // Adicione também o evento de copiar código
 document.getElementById('copyPixBtn').addEventListener('click', function () {
     const pixCode = document.getElementById('pixCode').textContent;
-    
+
     // Cria um elemento textarea temporário para copiar o texto
     const tempTextArea = document.createElement('textarea');
     tempTextArea.value = pixCode;
@@ -83,14 +76,14 @@ function obterValorDoPlano() {
     if (!plano) {
         showMessage('Nenhum plano selecionado. Por favor, volte e selecione um plano.', true);
         // Redireciona o usuário, pois não há plano selecionado
-        window.location.href = 'planos.html'; 
+        window.location.href = 'planos.html';
         return null; // Retorna null para evitar prosseguir sem valor
     }
 
     const valores = {
         vitalidade: 14.90,
         controlePeso: 9.99,
-        emagrecimento: 9.99,
+        emagrecimento: 12.90,
     };
 
     return valores[plano] || null;
@@ -107,8 +100,7 @@ const criarPagamento = async () => {
         showMessage('Preencha todos os dados corretamente antes de prosseguir!', true);
         return;
     }
-    
-    // Verifica se formData.raca existe, pois o backend espera por ele
+
     if (!formData.raca) {
         showMessage('Informação sobre a raça do pet está faltando no formulário.', true);
         return;
@@ -124,8 +116,9 @@ const criarPagamento = async () => {
                 email,
                 nome,
                 petNome,
-                formData, // Certifique-se de que formData contém 'raca'
-                valor
+                formData,
+                valor,
+                tipoReceita: sessionStorage.getItem('planoEscolhido') // Adicionado aqui!
             }),
         });
 

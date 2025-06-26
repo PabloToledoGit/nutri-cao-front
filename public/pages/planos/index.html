@@ -5,38 +5,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Planos | NutriCão</title>
+    <link rel="icon" href="../../assets/img/pata-de-cachorro.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- HEADER -->
-    <header class="bg-white shadow sticky top-0 z-50">
-        <div class="flex items-center justify-between px-8 py-4 max-w-screen-xl mx-auto">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex flex-col">
-                <span class="text-blue-700 text-2xl font-semibold tracking-wide">NutriCão</span>
-                <span class="text-sm text-gray-500 font-light">Nutrição equilibrada para seu cão</span>
+                <span class="text-2xl font-bold text-blue-700">NutriCão</span>
+                <span class="text-sm text-gray-500">Cuidado nutricional para seu cão</span>
             </div>
 
-            <!-- Botão do menu hamburguer -->
-            <button id="menu-btn" class="md:hidden text-blue-700 text-3xl focus:outline-none" aria-label="Abrir menu">
-                &#9776;
-            </button>
-
-            <!-- Menu -->
-            <nav id="menu"
-                class="absolute top-full left-0 w-full bg-white shadow-md px-8 py-4 space-y-4 transition-all duration-300 ease-in-out transform scale-y-0 opacity-0 origin-top md:opacity-100 md:scale-y-100 md:static md:bg-transparent md:shadow-none md:flex md:items-center md:space-y-0 md:space-x-8 md:w-auto md:py-0 md:px-0">
-                <a href="#" class="block text-blue-700 font-medium hover:text-blue-900 transition-colors duration-300">
-                    Home
-                </a>
-                <a href="#" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300">
-                    Perfil
-                </a>
-                <a href="https://wa.me/5524992618332"
-                    class="block text-gray-600 hover:text-blue-700 transition-colors duration-300">
-                    Ajuda
-                </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../formulario/" class="hover:text-blue-700 font-medium">Home</a>
+                <a href="../comoFunciona/" class="hover:text-blue-700">Como Funciona</a>
+                <a href="https://wa.me/5524992618332" class="hover:text-blue-700">Fale Conosco</a>
             </nav>
+
+            <!-- Mobile -->
+            <button id="menu-btn" class="md:hidden text-3xl text-blue-700">&#9776;</button>
+        </div>
+
+        <div id="menu" class="hidden md:hidden px-6 pb-4">
+            <a href="../formulario/" class="block py-2">Home</a>
+            <a href="../comoFunciona/" class="block py-2">Como Funciona</a>
+            <a href="https://wa.me/5524992618332" class="block py-2">Fale Conosco</a>
         </div>
     </header>
 
@@ -119,7 +115,7 @@
                     </ul>
                     <div class="text-center mb-4">
                         <p class="text-sm text-gray-400 line-through">R$ 39,90</p>
-                        <p class="text-2xl font-bold text-blue-700">R$ 9,99</p>
+                        <p class="text-2xl font-bold text-blue-700">R$ 12,90</p>
                         <p class="text-xs text-gray-400">Promoção por tempo limitado</p>
                     </div>
                     <button onclick="escolherPlano('emagrecimento')"
@@ -136,7 +132,7 @@
             const valores = {
                 vitalidade: 14.90,
                 controlePeso: 9.99,
-                emagrecimento: 9.99,
+                emagrecimento: 12.90,
             };
 
             // Salva o plano escolhido no sessionStorage
@@ -146,7 +142,7 @@
             sessionStorage.setItem('valorPlano', valores[plano]);
 
             // Redireciona para a página de checkout
-            window.location.href = 'checkout.html';
+            window.location.href = '../checkout/';
         }
     </script>
     <script>

@@ -11,7 +11,7 @@ document.getElementById('gerarReceitaBtn').addEventListener('click', () => {
     genero: document.querySelector('.gender-btn.bg-blue-600')?.dataset.genero || ''
   };
 
-  // Validação simples
+
   const camposObrigatorios = ['raca', 'peso', 'altura', 'idade', 'porte', 'atividade', 'objetivo', 'genero'];
   const camposVazios = camposObrigatorios.filter(campo => !formData[campo]);
 
@@ -20,9 +20,9 @@ document.getElementById('gerarReceitaBtn').addEventListener('click', () => {
     return;
   }
 
-  // Salvar no sessionStorage
+
   sessionStorage.setItem('formData', JSON.stringify(formData));
 
-  // Redirecionar para a página de planos
-  window.location.href = 'planos.html';
+
+  window.location.href = '/pages/planos/';
 });
