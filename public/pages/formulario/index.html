@@ -8,6 +8,25 @@
   <meta name="description" content="Monte um plano alimentar saudável, seguro e personalizado para seu cão.">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="../../assets/img/pata-de-cachorro.png" type="image/png">
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '597980033008905');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=597980033008905&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <body class="bg-white text-gray-800 font-[Inter]">
@@ -127,7 +146,7 @@
     <section class="bg-white border border-blue-100 rounded-2xl shadow-xl p-8 text-center">
       <h2 class="text-2xl font-bold text-blue-700 mb-4">Plano Personalizado</h2>
       <p class="text-lg text-gray-600 mb-2">Por apenas</p>
-      <p class="text-4xl font-extrabold text-blue-700 mb-6">R$ 14,90</p>
+      <p class="text-4xl font-extrabold text-blue-700 mb-6">R$ 10,00</p>
 
       <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 text-left mb-6">
         <ul class="space-y-2 text-sm">
@@ -157,7 +176,7 @@
   </footer>
 
   <!-- Scripts -->
-   <script type="module" src="../../js/formulario.js"></script>
+  <script type="module" src="../../js/formulario.js"></script>
   <script>
     const menuBtn = document.getElementById('menu-btn');
     const menu = document.getElementById('menu');

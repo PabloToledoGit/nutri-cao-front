@@ -5,94 +5,163 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - NutriCão</title>
-  <link rel="stylesheet" href="../../css/checkout.css">
-  <link rel="icon" href="../../assets/img/pata-de-cachorro.png" type="image/png"  >
+  <link rel="icon" href="../../assets/img/pata-de-cachorro.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4189679208021680');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=4189679208021680&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 
-<body>
-  <div class="container">
-    <div class="checkout-card">
-      <div class="header">
-        <h1>Finalize seu Pedido</h1>
-        <p>Plano Nutricional Veterinário Personalizado</p>
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-lg bg-white p-8 rounded-2xl shadow-2xl border border-gray-200">
+
+      <div class="mb-6 text-center">
+        <h1 class="text-3xl font-bold text-blue-700 mb-1">🎯 Finalize seu Pedido</h1>
+        <p class="text-gray-600 text-sm">Plano Nutricional Veterinário Personalizado</p>
       </div>
 
-      <div class="payment-summary">
-        <div>Pagamento via PIX</div>
-        <span id="valorTotal"></span>
+      <div class="bg-blue-50 border border-blue-200 rounded-xl px-6 py-4 mb-6">
+        <p class="text-blue-700 text-sm font-semibold">Pagamento via PIX</p>
+        <p id="valorTotal" class="text-2xl font-bold mt-2"></p>
       </div>
 
-      <div class="feature-list">
-        <div class="feature-item"><span>✓</span> Acesso imediato após pagamento</div>
-        <div class="feature-item"><span>✓</span> Plano alimentar em PDF</div>
-        <div class="feature-item"><span>✓</span> Guia de suplementação veterinária</div>
-        <div class="feature-item"><span>✓</span> Programa de exercícios personalizado</div>
-      </div>
+      <ul class="mb-6 space-y-2 text-sm text-gray-700">
+        <li class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span> Acesso imediato após
+          pagamento</li>
+        <li class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span> Plano alimentar em PDF</li>
+        <li class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span> Guia de suplementação
+          veterinária</li>
+        <li class="flex items-center gap-2"><span class="text-green-600 font-bold">✓</span> Programa de exercícios
+          personalizado</li>
+      </ul>
 
-      <form id="pixForm">
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" required placeholder="seu@email.com" class="form-control">
+      <form id="pixForm" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium">E-mail</label>
+          <input type="email" id="email" required placeholder="seu@email.com"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <div class="form-group">
-          <label for="nome">Nome Completo</label>
-          <input type="text" id="nome" required placeholder="Seu nome" class="form-control">
+        <div>
+          <label for="nome" class="block text-sm font-medium">Nome Completo</label>
+          <input type="text" id="nome" required placeholder="Seu nome"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <div class="form-group">
-          <label for="petNome">Nome do seu Pet</label>
-          <input type="text" id="petNome" required placeholder="Nome do seu cão" class="form-control">
+        <div>
+          <label for="petNome" class="block text-sm font-medium">Nome do seu Pet</label>
+          <input type="text" id="petNome" required placeholder="Nome do seu cão"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <button type="submit" class="btn-primary">
-          Gerar Código PIX →
-        </button>
+        <!-- ORDER BUMP -->
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 rounded-xl p-4 shadow mb-4 flex items-start gap-4">
+          <input type="checkbox" id="orderBump" name="orderBump" checked
+            class="mt-1 accent-yellow-500 w-5 h-5 rounded" />
+          <label for="orderBump" class="flex-1 cursor-pointer">
+            <span class="block text-yellow-800 font-bold text-sm sm:text-base">🎁 Desafio: Ensine Seu Pet a Obedecer
+              Comandos Básicos em Uma Semana</span>
+            <span class="text-yellow-700 text-xs sm:text-sm block mt-1">Inclua por apenas <strong
+                class="text-yellow-900">+R$ 7,90</strong> e acelere o adestramento do seu cão de forma prática e
+              divertida!</span>
+          </label>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-base font-semibold transition duration-200 btn-primary">Gerar
+          Código PIX →</button>
       </form>
 
-      <div id="pixResult" class="pix-result">
-        <h3 style="text-align: center; margin-bottom: 1rem;">Pagamento via PIX</h3>
+      <div id="pixResult" class="hidden mt-8">
+        <h3 class="text-center text-lg font-semibold mb-4">Pagamento via PIX</h3>
 
-        <div style="text-align: center; margin-bottom: 1rem;">
-          <p style="font-weight: 500;">Código PIX Copia e Cola</p>
-          <div
-            style="background: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border: 1px solid var(--border);">
-            <pre id="pixCode" style="margin: 0; word-break: break-all; font-size: 0.85rem;"></pre>
+        <div class="mb-4 text-center">
+          <p class="font-medium mb-2">Código PIX Copia e Cola</p>
+          <div class="relative bg-gray-100 rounded-xl border border-gray-300 mb-4 overflow-x-auto">
+            <pre id="pixCode" class="text-sm text-gray-800 px-4 py-3 whitespace-pre-wrap break-words"></pre>
           </div>
-          <button id="copyPixBtn" class="copy-btn">📋 Copiar Código</button>
+
+          <button id="copyPixBtn"
+            class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 text-white font-medium py-3 rounded-xl flex items-center justify-center gap-2 text-base shadow-sm">
+            📋 Copiar Código PIX
+          </button>
+
         </div>
 
-        <div style="text-align: center;">
-          <p style="font-weight: 500;">Ou escaneie o QR Code</p>
-          <div class="qr-code-container">
-            <img id="pixQRCode" alt="QR Code PIX" style="width: 180px; height: 180px;">
+        <div class="text-center">
+          <p class="font-medium mb-2">Ou escaneie o QR Code</p>
+          <div class="flex justify-center">
+            <img id="pixQRCode" alt="QR Code PIX" class="w-40 h-40 rounded-lg shadow" />
           </div>
         </div>
       </div>
 
-      <div class="secure-badge">🔒 Pagamento 100% seguro - Dados criptografados</div>
+      <p class="mt-6 text-sm text-center text-gray-500">🔒 Pagamento 100% seguro - Dados criptografados</p>
     </div>
   </div>
 
-  <div id="toast">Código PIX copiado!</div>
+  <div id="toast" class="fixed bottom-6 right-6 bg-green-600 text-white py-2 px-4 rounded shadow-md text-sm hidden">
+    Código PIX copiado!</div>
 
   <script type="module" src="../../js/checkout.js"></script>
+  <script>
+    function atualizarValorExibido() {
+      const plano = sessionStorage.getItem('planoEscolhido');
+      const valores = {
+        vitalidade: 18.9,
+        controlePeso: 9.99,
+        emagrecimento: 12.9,
+      };
+
+      let valor = valores[plano] || 0;
+
+      const bumpAtivo = document.getElementById('orderBump')?.checked;
+      if (bumpAtivo) {
+        valor += 7.9;
+      }
+
+      const valorFormatado = valor.toFixed(2).replace('.', ',');
+      document.getElementById('valorTotal').textContent = `R$ ${valorFormatado}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      atualizarValorExibido();
+
+      const bumpCheckbox = document.getElementById('orderBump');
+      if (bumpCheckbox) {
+        bumpCheckbox.addEventListener('change', atualizarValorExibido);
+      }
+    });
+  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const valorPlano = sessionStorage.getItem('valorPlano');
+      const valorSpan = document.getElementById('valorTotal');
 
       if (!valorPlano) {
-        // Caso não tenha valor, pode exibir uma mensagem ou valor padrão
-        document.getElementById('valorTotal').textContent = 'R$ 0,00';
+        valorSpan.textContent = 'R$ 0,00';
         return;
       }
 
-      // Formata o valor para duas casas decimais com vírgula
       const valorFormatado = parseFloat(valorPlano).toFixed(2).replace('.', ',');
-
-      // Atualiza o span com o valor formatado
-      document.getElementById('valorTotal').textContent = `R$ ${valorFormatado}`;
+      valorSpan.textContent = `R$ ${valorFormatado}`;
     });
   </script>
-
 </body>
 
 </html>

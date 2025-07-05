@@ -7,6 +7,25 @@
     <title>Planos | NutriCão</title>
     <link rel="icon" href="../../assets/img/pata-de-cachorro.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1406773917222484');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1406773917222484&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body class="bg-gray-50 text-gray-800">
@@ -52,29 +71,6 @@
             </p>
 
             <div class="grid gap-8 md:grid-cols-3">
-                <!-- Plano Vitalidade e Energia -->
-                <div
-                    class="border border-blue-200 rounded-2xl p-6 bg-white hover:shadow-lg hover:-translate-y-1 transition-transform duration-300">
-                    <h3 class="text-xl font-semibold text-blue-700 mb-2 text-center">Plano Vitalidade e Energia</h3>
-                    <p class="text-sm text-gray-500 italic text-center mb-4">
-                        Para cães ativos que precisam de energia extra para brincar e explorar.
-                    </p>
-                    <ul class="text-sm text-gray-700 space-y-2 mb-6 list-disc list-inside">
-                        <li>Alimentação balanceada com alta energia</li>
-                        <li>Suporte para saúde muscular e disposição</li>
-                        <li>Rotina de exercícios e brincadeiras recomendada</li>
-                        <li>Lista de compras simples e prática</li>
-                    </ul>
-                    <div class="text-center mb-4">
-                        <p class="text-sm text-gray-400 line-through">R$ 49,90</p>
-                        <p class="text-2xl font-bold text-blue-700">R$ 14,90</p>
-                        <p class="text-xs text-gray-400">Promoção por tempo limitado</p>
-                    </div>
-                    <button onclick="escolherPlano('vitalidade')"
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-sm font-medium transition">
-                        Quero Mais Energia
-                    </button>
-                </div>
 
                 <!-- Plano Controle de Peso -->
                 <div
@@ -99,7 +95,6 @@
                         Quero Controle de Peso
                     </button>
                 </div>
-
                 <!-- Plano Saúde e Emagrecimento -->
                 <div
                     class="border border-blue-200 rounded-2xl p-6 bg-white hover:shadow-lg hover:-translate-y-1 transition-transform duration-300">
@@ -115,7 +110,7 @@
                     </ul>
                     <div class="text-center mb-4">
                         <p class="text-sm text-gray-400 line-through">R$ 39,90</p>
-                        <p class="text-2xl font-bold text-blue-700">R$ 12,90</p>
+                        <p class="text-2xl font-bold text-blue-700">R$ 14,90</p>
                         <p class="text-xs text-gray-400">Promoção por tempo limitado</p>
                     </div>
                     <button onclick="escolherPlano('emagrecimento')"
@@ -123,16 +118,84 @@
                         Quero Emagrecer com Saúde
                     </button>
                 </div>
+
+
+                <!-- Plano Vitalidade e Energia -->
+                <div
+                    class="border border-blue-200 rounded-2xl p-6 bg-white hover:shadow-lg hover:-translate-y-1 transition-transform duration-300">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-2 text-center">Plano Vitalidade e Energia</h3>
+                    <p class="text-sm text-gray-500 italic text-center mb-4">
+                        Para cães ativos que precisam de energia extra para brincar e explorar.
+                    </p>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-6 list-disc list-inside">
+                        <li>Alimentação balanceada com alta energia</li>
+                        <li>Suporte para saúde muscular e disposição</li>
+                        <li>Rotina de exercícios e brincadeiras recomendada</li>
+                        <li>Lista de compras simples e prática</li>
+                    </ul>
+                    <div class="text-center mb-4">
+                        <p class="text-sm text-gray-400 line-through">R$ 49,90</p>
+                        <p class="text-2xl font-bold text-blue-700">R$ 18,90</p>
+                        <p class="text-xs text-gray-400">Promoção por tempo limitado</p>
+                    </div>
+                    <button onclick="escolherPlano('vitalidade')"
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-sm font-medium transition">
+                        Quero Mais Energia
+                    </button>
+                </div>
+
             </div>
         </div>
     </section>
+    <!-- ETAPAS DO PROCESSO -->
+<section class="bg-blue-50 py-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-extrabold text-center text-blue-700 mb-4">Como Funciona o Processo</h2>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      Veja como a NutriCão cria uma dieta personalizada para seu pet em poucos passos:
+    </p>
+
+    <div class="grid gap-8 md:grid-cols-4">
+
+      <!-- Etapa 1 -->
+      <div class="bg-white border border-blue-200 rounded-2xl p-6 text-center shadow hover:shadow-lg transition">
+        <div class="text-5xl mb-4 text-blue-600">1️⃣</div>
+        <h3 class="text-lg font-semibold text-blue-700 mb-2">Preenchimento do Formulário</h3>
+        <p class="text-sm text-gray-600">Você preenche um formulário simples com os dados do seu cão: raça, idade, peso, nível de atividade e objetivos.</p>
+      </div>
+
+      <!-- Etapa 2 -->
+      <div class="bg-white border border-blue-200 rounded-2xl p-6 text-center shadow hover:shadow-lg transition">
+        <div class="text-5xl mb-4 text-blue-600">2️⃣</div>
+        <h3 class="text-lg font-semibold text-blue-700 mb-2">Análise Inteligente</h3>
+        <p class="text-sm text-gray-600">Nossa IA especializada analisa os dados e monta uma dieta personalizada com base nas necessidades do seu pet.</p>
+      </div>
+
+      <!-- Etapa 3 -->
+      <div class="bg-white border border-blue-200 rounded-2xl p-6 text-center shadow hover:shadow-lg transition">
+        <div class="text-5xl mb-4 text-blue-600">3️⃣</div>
+        <h3 class="text-lg font-semibold text-blue-700 mb-2">Geração da Dieta</h3>
+        <p class="text-sm text-gray-600">A dieta completa é gerada automaticamente em PDF com cardápio diário, lista de compras e dicas de cuidados.</p>
+      </div>
+
+      <!-- Etapa 4 -->
+      <div class="bg-white border border-blue-200 rounded-2xl p-6 text-center shadow hover:shadow-lg transition">
+        <div class="text-5xl mb-4 text-blue-600">4️⃣</div>
+        <h3 class="text-lg font-semibold text-blue-700 mb-2">Envio Imediato</h3>
+        <p class="text-sm text-gray-600">Após a confirmação do pagamento, você recebe a dieta diretamente no seu WhatsApp ou e-mail em poucos minutos.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
     <script>
         function escolherPlano(plano) {
             // Tabela de valores dos planos
             const valores = {
-                vitalidade: 14.90,
+                vitalidade: 18.90,
                 controlePeso: 9.99,
-                emagrecimento: 12.90,
+                emagrecimento: 14.90,
             };
 
             // Salva o plano escolhido no sessionStorage

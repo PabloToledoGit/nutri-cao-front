@@ -1,4 +1,3 @@
-
 function showMessage(message, isError = false) {
     const messageBox = document.getElementById('messageBox');
     const messageText = document.getElementById('messageText');
@@ -81,9 +80,9 @@ function obterValorDoPlano() {
     }
 
     const valores = {
-        vitalidade: 14.90,
+        vitalidade: 18.9,
         controlePeso: 9.99,
-        emagrecimento: 12.90,
+        emagrecimento: 12.9,
     };
 
     return valores[plano] || null;
@@ -94,9 +93,10 @@ const criarPagamento = async () => {
     const nome = document.getElementById('nome').value;
     const petNome = document.getElementById('petNome').value;
     const formData = JSON.parse(sessionStorage.getItem('formData'));
-    const valor = obterValorDoPlano();
+    const plano = sessionStorage.getItem('planoEscolhido');
+    const valorBase = obterValorDoPlano();
 
-    if (!email || !nome || !petNome || !formData || !valor) {
+    if (!email || !nome || !petNome || !formData || !valorBase) {
         showMessage('Preencha todos os dados corretamente antes de prosseguir!', true);
         return;
     }
@@ -105,6 +105,12 @@ const criarPagamento = async () => {
         showMessage('Informação sobre a raça do pet está faltando no formulário.', true);
         return;
     }
+
+    // Verifica se o order bump está marcado
+    const incluiComandosBasicos = document.getElementById('orderBump')?.checked || false;
+
+    // Valor extra do bump (R$ 7,90)
+    const valorFinal = incluiComandosBasicos ? valorBase + 7.9 : valorBase;
 
     try {
         const response = await fetch('https://nutri-cao.vercel.app/api/criar-pagamento', {
@@ -117,26 +123,24 @@ const criarPagamento = async () => {
                 nome,
                 petNome,
                 formData,
-                valor,
-                tipoReceita: sessionStorage.getItem('planoEscolhido') // Adicionado aqui!
+                valor: valorFinal,
+                tipoReceita: plano,
+                incluiComandosBasicos,
             }),
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-            // Lança um erro com a mensagem do backend, se disponível
             throw new Error(data.error || 'Erro desconhecido ao criar pagamento');
         }
 
         console.log('Pagamento criado com sucesso:', data);
 
-        // Exibe na tela o QRCode PIX e outras informações
         document.getElementById('pixCode').textContent = data.qrCode;
         document.getElementById('pixQRCode').src = `data:image/png;base64,${data.qrCodeBase64}`;
         document.getElementById('pixResult').style.display = 'block';
 
-        // Rolagem suave até a seção do resultado do PIX
         document.getElementById('pixResult').scrollIntoView({ behavior: 'smooth' });
 
     } catch (error) {
@@ -144,4 +148,5 @@ const criarPagamento = async () => {
         showMessage('Erro na criação do pagamento: ' + error.message, true);
     }
 };
+
 
